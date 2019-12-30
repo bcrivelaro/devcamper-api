@@ -3,13 +3,11 @@ const asyncHandler = require('../middleware/async');
 const Course = require('../models/Course');
 const Bootcamp = require('../models/Bootcamp');
 
-// @desc      Get all courses
+// @desc      Get courses
 // @route     GET /api/v1/courses
 // @route     GET /api/v1/bootcamp/:bootcampId/courses
 // @access    Public
 exports.getCourses = asyncHandler(async (req, res, next) => {
-  let query;
-
   if (req.params.bootcampId) {
     const courses = await Course.find({ bootcamp: req.params.bootcampId });
 
@@ -21,7 +19,7 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
   }
 });
 
-// @desc      Get a course
+// @desc      Get course
 // @route     GET /api/v1/courses/:id
 // @access    Public
 exports.getCourse = asyncHandler(async (req, res, next) => {
